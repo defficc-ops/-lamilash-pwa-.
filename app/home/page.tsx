@@ -44,18 +44,18 @@ export default function HomePage() {
         }}
       >
         {/* Subtle decorative glow */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 blur-[100px] rounded-full" />
-        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-cocoa/5 blur-[80px] rounded-full" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 blur-[100px] rounded-full" />
+        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-warm-beige/20 blur-[80px] rounded-full" />
 
         <div className="relative z-10 px-6 pt-10 pb-6">
           {/* Greeting tag */}
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md px-3 py-1 rounded-lg mb-4 border border-white/10"
+            className="inline-flex items-center gap-2 bg-white/40 backdrop-blur-md px-3 py-1 rounded-lg mb-4 border border-gold/20 shadow-sm"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-            <span className="text-gold/80 text-[10px] font-bold tracking-[0.2em] uppercase">Professional Studio</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+            <span className="text-espresso/70 text-[10px] font-bold tracking-[0.2em] uppercase">Professional Studio</span>
           </motion.div>
 
           <motion.h1
@@ -83,7 +83,7 @@ export default function HomePage() {
               <Calendar size={14} />
               Записаться
             </Link>
-            <Link href="/portfolio" className="bg-white/5 border border-white/10 text-espresso px-5 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center">
+            <Link href="/portfolio" className="bg-white border border-gold/20 text-espresso px-5 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gold/5 transition-all flex items-center justify-center shadow-sm">
               Работы
             </Link>
           </motion.div>
@@ -91,7 +91,7 @@ export default function HomePage() {
 
         {/* Stats row */}
         <motion.div
-          className="mx-6 glass-card rounded-2xl p-4 flex justify-around border border-white/5"
+          className="mx-6 glass-card rounded-2xl p-4 flex justify-around border border-gold/10"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -110,13 +110,13 @@ export default function HomePage() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
         >
-          <div className="glass-card rounded-3xl p-6 border border-white/10 relative overflow-hidden bg-gradient-to-br from-white/5 to-transparent">
+          <div className="glass-card rounded-3xl p-6 border border-gold/10 relative overflow-hidden bg-white/40">
             {/* Decorative element */}
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-gold/10 blur-3xl rounded-full" />
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-gold/5 blur-3xl rounded-full" />
             
             <div className="flex flex-col gap-4 relative z-10">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-warm-beige flex items-center justify-center text-xl shadow-inner">
+                <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-xl shadow-inner">
                   ✨
                 </div>
                 <p className="font-serif text-lg font-bold text-espresso">Я Карина — твой мастер Лами</p>
@@ -155,7 +155,7 @@ export default function HomePage() {
       >
         <motion.div variants={itemVariants} className="flex items-center justify-between mb-5">
           <h2 className="font-serif text-2xl font-bold text-espresso">Услуги</h2>
-          <Link href="/booking" className="text-cocoa text-sm font-medium flex items-center gap-1">
+          <Link href="/booking" className="text-gold text-sm font-semibold flex items-center gap-1">
             Все <ChevronRight size={14} />
           </Link>
         </motion.div>
@@ -167,11 +167,11 @@ export default function HomePage() {
                 <div className="service-card p-4">
                   <span className="text-2xl block mb-2">{svc.icon}</span>
                   <p className="font-semibold text-espresso text-[13px] leading-snug mb-2">{svc.name}</p>
-                  <div className="flex items-center gap-1 text-espresso/50 text-[11px] mb-2">
+                  <div className="flex items-center gap-1 text-espresso/40 text-[11px] mb-2">
                     <Clock size={11} />
                     <span>{svc.time}</span>
                   </div>
-                  <p className="text-cocoa font-bold text-sm">{svc.price}</p>
+                  <p className="text-gold font-bold text-sm">{svc.price}</p>
                 </div>
               </Link>
             </motion.div>
@@ -201,8 +201,8 @@ export default function HomePage() {
               variants={itemVariants}
               className="flex gap-4 glass-card rounded-2xl p-4"
             >
-              <div className="w-11 h-11 rounded-xl bg-warm-beige flex items-center justify-center flex-shrink-0">
-                <Icon size={20} className="text-cocoa" />
+              <div className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+                <Icon size={20} className="text-gold" />
               </div>
               <div>
                 <p className="font-semibold text-espresso text-sm">{title}</p>
@@ -222,19 +222,18 @@ export default function HomePage() {
         transition={{ duration: 0.6 }}
       >
         <div
-          className="rounded-3xl p-6 text-center relative overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #8B6348 0%, #5C3D2E 100%)' }}
+          className="rounded-3xl p-8 text-center relative overflow-hidden border border-gold/20"
+          style={{ background: 'linear-gradient(135deg, var(--card-bg) 0%, var(--warm-beige) 100%)' }}
         >
-          <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full opacity-20"
-            style={{ background: 'radial-gradient(circle, #C9A96E, transparent)' }} />
-          <p className="font-serif text-2xl font-bold text-cream mb-2">
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-gold/10 blur-[60px] rounded-full" />
+          <p className="font-serif text-2xl font-bold text-espresso mb-2">
             Готовы к преображению?
           </p>
-          <p className="text-cream/70 text-sm mb-5">Запишитесь онлайн прямо сейчас</p>
+          <p className="text-espresso/60 text-sm mb-6 font-medium">Запишитесь онлайн прямо сейчас</p>
           <Link
             href="/booking"
             id="cta-book-btn"
-            className="inline-block bg-white text-cocoa font-bold px-8 py-3.5 rounded-full text-sm shadow-strong hover:shadow-glow transition-all"
+            className="btn-primary inline-block px-10 py-4 rounded-full text-xs uppercase tracking-widest shadow-lg active:scale-95 transition-all"
           >
             Выбрать время ✨
           </Link>

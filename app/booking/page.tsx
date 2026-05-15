@@ -90,27 +90,27 @@ export default function BookingPage() {
     <div className="page-container bg-cream min-h-screen text-espresso">
       {/* Header */}
       <div className="pt-safe px-5 pt-14 pb-4">
-        <p className="text-cherry text-xs font-semibold uppercase tracking-widest mb-1">Онлайн-запись</p>
+        <p className="text-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-1">Онлайн-запись</p>
         <h1 className="font-serif text-3xl font-bold">Записаться</h1>
       </div>
 
       {/* Step indicator */}
-      <div className="px-5 mb-6">
+      <div className="px-5 mb-8">
         <div className="flex items-center gap-1">
           {STEPS.slice(0,4).map((label, i) => (
             <div key={i} className="flex items-center gap-1 flex-1">
-              <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
-                i < step ? 'bg-cherry text-white' : i === step ? 'bg-cherry text-white ring-4 ring-cherry/20' : 'bg-warm-beige text-espresso/40'
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold transition-all ${
+                i < step ? 'bg-gold text-white' : i === step ? 'bg-gold text-white ring-4 ring-gold/20' : 'bg-warm-beige/30 text-espresso/30 border border-gold/5'
               }`}>
                 {i < step ? '✓' : i + 1}
               </div>
-              {i < 3 && <div className={`flex-1 h-0.5 rounded-full transition-all ${i < step ? 'bg-cherry' : 'bg-sand/40'}`} />}
+              {i < 3 && <div className={`flex-1 h-0.5 rounded-full transition-all ${i < step ? 'bg-gold' : 'bg-gold/10'}`} />}
             </div>
           ))}
         </div>
-        <div className="flex justify-between mt-1 px-0">
+        <div className="flex justify-between mt-2 px-0">
           {STEPS.slice(0,4).map((l, i) => (
-            <span key={i} className={`text-[10px] ${i === step ? 'text-cherry font-semibold' : 'text-espresso/40'}`}>{l}</span>
+            <span key={i} className={`text-[9px] font-bold uppercase tracking-widest ${i === step ? 'text-gold' : 'text-espresso/30'}`}>{l}</span>
           ))}
         </div>
       </div>
@@ -121,21 +121,23 @@ export default function BookingPage() {
           {/* STEP 0 — Service */}
           {step === 0 && (
             <motion.div key="s0" initial={{ opacity:0, x:40 }} animate={{ opacity:1, x:0 }} exit={{ opacity:0, x:-40 }}>
-              <h2 className="font-semibold text-espresso mb-4 text-sm uppercase tracking-wider opacity-60">Выберите услугу</h2>
+              <h2 className="font-bold text-espresso mb-4 text-[10px] uppercase tracking-[0.2em] opacity-40">Выберите услугу</h2>
               <div className="space-y-3">
                 {SERVICES.map((svc) => (
                   <button key={svc.id} id={`svc-${svc.id}`}
                     onClick={() => { setService(svc); setStep(1) }}
-                    className={`w-full text-left service-card p-4 flex items-center gap-4 transition-all active:scale-95 ${service?.id === svc.id ? 'border-cherry' : ''}`}>
-                    <span className="text-2xl">{svc.icon}</span>
+                    className={`w-full text-left service-card p-5 flex items-center gap-5 transition-all active:scale-98 ${service?.id === svc.id ? 'border-gold shadow-md' : 'border-gold/10'}`}>
+                    <div className="w-12 h-12 rounded-2xl bg-gold/5 flex items-center justify-center text-2xl">
+                      {svc.icon}
+                    </div>
                     <div className="flex-1">
-                      <p className="font-semibold text-espresso text-sm">{svc.name}</p>
-                      <div className="flex gap-3 mt-1">
-                        <span className="text-xs text-espresso/50 flex items-center gap-1"><Clock size={11}/>{svc.duration} мин</span>
-                        <span className="text-xs font-bold text-cherry">{svc.price.toLocaleString()} с</span>
+                      <p className="font-bold text-espresso text-sm tracking-tight">{svc.name}</p>
+                      <div className="flex gap-4 mt-1.5">
+                        <span className="text-[10px] font-bold text-espresso/40 flex items-center gap-1 uppercase tracking-wider"><Clock size={12} className="text-gold/60"/>{svc.duration} мин</span>
+                        <span className="text-xs font-bold text-gold">{svc.price.toLocaleString()} с</span>
                       </div>
                     </div>
-                    <ChevronRight size={18} className="text-sand" />
+                    <ChevronRight size={18} className="text-gold/30" />
                   </button>
                 ))}
               </div>
@@ -146,10 +148,10 @@ export default function BookingPage() {
           {step === 1 && (
             <motion.div key="s1" initial={{ opacity:0, x:40 }} animate={{ opacity:1, x:0 }} exit={{ opacity:0, x:-40 }}>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold text-espresso text-sm uppercase tracking-wider opacity-60">Выберите дату</h2>
-                <button onClick={() => setStep(0)} className="text-cherry text-sm font-medium">← Назад</button>
+                <h2 className="font-bold text-espresso text-[10px] uppercase tracking-[0.2em] opacity-40">Выберите дату</h2>
+                <button onClick={() => setStep(0)} className="text-gold text-xs font-bold uppercase tracking-widest">← Назад</button>
               </div>
-              <div className="glass-card rounded-3xl p-4">
+              <div className="glass-card rounded-[32px] p-4 border border-gold/10">
                 <DayPicker
                   mode="single"
                   selected={date}
@@ -172,16 +174,16 @@ export default function BookingPage() {
           {step === 2 && (
             <motion.div key="s2" initial={{ opacity:0, x:40 }} animate={{ opacity:1, x:0 }} exit={{ opacity:0, x:-40 }}>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold text-espresso text-sm uppercase tracking-wider opacity-60">Выберите время</h2>
-                <button onClick={() => setStep(1)} className="text-cherry text-sm font-medium">← Назад</button>
+                <h2 className="font-bold text-espresso text-[10px] uppercase tracking-[0.2em] opacity-40">Выберите время</h2>
+                <button onClick={() => setStep(1)} className="text-gold text-xs font-bold uppercase tracking-widest">← Назад</button>
               </div>
               {date && (
-                <div className="glass-card rounded-2xl p-4 mb-4 flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-sm text-espresso/70">
-                    <Calendar size={16} className="text-cherry" />
+                <div className="glass-card rounded-2xl p-4 mb-6 flex items-center justify-between border border-gold/10 bg-white">
+                  <div className="flex items-center gap-3 text-sm font-bold text-espresso/70">
+                    <Calendar size={18} className="text-gold" />
                     <span>{format(date, 'd MMMM yyyy', { locale: ru })}</span>
                   </div>
-                  <div className="w-1 h-1 rounded-full bg-cherry/40" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-gold/40 animate-pulse" />
                 </div>
               )}
               
@@ -190,22 +192,22 @@ export default function BookingPage() {
                   availableSlots.map((s) => (
                     <button key={s.id} id={`time-${s.time}`}
                       onClick={() => { setTime(s.time); setSlotId(s.id); setStep(3) }}
-                      className={`py-3 rounded-2xl text-sm font-semibold border transition-all active:scale-95 ${
+                      className={`py-4 rounded-2xl text-xs font-bold uppercase tracking-widest border transition-all active:scale-95 ${
                         time === s.time
-                          ? 'bg-cherry text-white border-cherry'
-                          : 'bg-warm-beige text-espresso border-sand/40'
+                          ? 'bg-gold text-white border-gold shadow-lg shadow-gold/20'
+                          : 'bg-white text-espresso border-gold/10 hover:border-gold/40'
                       }`}>
                       {s.time}
                     </button>
                   ))
                 ) : (
-                  <div className="col-span-3 py-10 text-center glass-card rounded-2xl">
-                    <p className="text-sm text-espresso/40">Нет свободных мест на эту дату 😔</p>
+                  <div className="col-span-3 py-12 text-center glass-card rounded-3xl border-dashed border-gold/20">
+                    <p className="text-xs font-bold text-espresso/30 uppercase tracking-widest">Нет свободных мест 😔</p>
                   </div>
                 )}
               </div>
-              <p className="text-[10px] text-espresso/30 text-center mt-6 uppercase tracking-[0.2em]">
-                * Время указано по местному часовому поясу
+              <p className="text-[9px] text-espresso/30 text-center mt-8 uppercase font-bold tracking-[0.2em]">
+                * Время по местному часовому поясу
               </p>
             </motion.div>
           )}
@@ -214,46 +216,46 @@ export default function BookingPage() {
           {step === 3 && (
             <motion.div key="s3" initial={{ opacity:0, x:40 }} animate={{ opacity:1, x:0 }} exit={{ opacity:0, x:-40 }}>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold text-espresso text-sm uppercase tracking-wider opacity-60">Ваши данные</h2>
-                <button onClick={() => setStep(2)} className="text-cherry text-sm font-medium">← Назад</button>
+                <h2 className="font-bold text-espresso text-[10px] uppercase tracking-[0.2em] opacity-40">Ваши данные</h2>
+                <button onClick={() => setStep(2)} className="text-gold text-xs font-bold uppercase tracking-widest">← Назад</button>
               </div>
 
               {/* Summary */}
-              <div className="glass-card rounded-3xl p-6 mb-6 space-y-4 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-24 h-24 bg-cherry/5 blur-2xl rounded-full" />
-                <div className="flex justify-between text-sm items-center">
-                  <span className="text-espresso/40 uppercase text-[10px] font-bold tracking-widest">Услуга</span>
-                  <span className="font-semibold text-espresso text-right max-w-[200px]">{service?.name}</span>
+              <div className="glass-card rounded-[32px] p-8 mb-8 space-y-5 relative overflow-hidden border border-gold/10">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 blur-3xl rounded-full" />
+                <div className="flex justify-between items-start gap-4">
+                  <span className="text-espresso/30 uppercase text-[9px] font-bold tracking-[0.2em] pt-1">Услуга</span>
+                  <span className="font-bold text-espresso text-sm text-right leading-tight">{service?.name}</span>
                 </div>
-                <div className="flex justify-between text-sm items-center">
-                  <span className="text-espresso/40 uppercase text-[10px] font-bold tracking-widest">Дата и время</span>
-                  <span className="font-semibold text-espresso">
+                <div className="flex justify-between items-center">
+                  <span className="text-espresso/30 uppercase text-[9px] font-bold tracking-[0.2em]">Время</span>
+                  <span className="font-bold text-espresso text-sm">
                     {date ? format(date, 'd MMMM', { locale: ru }) : '—'} в {time}
                   </span>
                 </div>
-                <div className="flex justify-between text-sm items-center pt-3 border-t border-white/5">
-                  <span className="text-espresso/40 uppercase text-[10px] font-bold tracking-widest">Стоимость</span>
-                  <span className="font-bold text-cherry text-lg">{service?.price.toLocaleString()} с</span>
+                <div className="flex justify-between items-center pt-4 border-t border-gold/5">
+                  <span className="text-espresso/30 uppercase text-[9px] font-bold tracking-[0.2em]">К оплате</span>
+                  <span className="font-bold text-gold text-xl tracking-tight">{service?.price.toLocaleString()} с</span>
                 </div>
               </div>
 
-              <div className="space-y-5">
+              <div className="space-y-6">
                 <div>
-                  <label className="text-xs font-bold text-espresso/40 uppercase tracking-widest mb-2 block ml-1">Ваше имя</label>
+                  <label className="text-[10px] font-bold text-espresso/40 uppercase tracking-widest mb-2 block ml-1">Ваше имя</label>
                   <input id="booking-name" value={name} onChange={(e) => setName(e.target.value)}
-                    placeholder="Введите имя" className="input-field bg-warm-beige/50 border-sand/30" />
+                    placeholder="Как к вам обращаться?" className="input-field bg-white border-gold/20" />
                 </div>
                 <div>
-                  <label className="text-xs font-bold text-espresso/40 uppercase tracking-widest mb-2 block ml-1">Номер телефона</label>
+                  <label className="text-[10px] font-bold text-espresso/40 uppercase tracking-widest mb-2 block ml-1">Номер телефона</label>
                   <input id="booking-phone" value={phone} onChange={handlePhoneChange}
-                    placeholder="+996 (___) ___-___" type="tel" className="input-field bg-warm-beige/50 border-sand/30" />
+                    placeholder="+996 (___) ___-___" type="tel" className="input-field bg-white border-gold/20" />
                 </div>
               </div>
 
               <button id="booking-confirm-btn" onClick={handleConfirm} disabled={!name || phone.length < 10 || loading}
-                className="btn-primary w-full py-5 mt-8 text-sm uppercase tracking-[0.2em] flex items-center justify-center gap-3 disabled:opacity-50">
+                className="btn-primary w-full py-6 mt-10 text-[10px] font-bold uppercase tracking-[0.3em] flex items-center justify-center gap-4 disabled:opacity-50 shadow-xl shadow-gold/20">
                 {loading ? <Loader size={18} className="animate-spin" /> : null}
-                {loading ? 'Отправляем...' : 'Подтвердить запись'}
+                {loading ? 'Отправляем...' : 'Записаться'}
               </button>
             </motion.div>
           )}
@@ -261,25 +263,27 @@ export default function BookingPage() {
           {/* STEP 4 — Done */}
           {step === 4 && (
             <motion.div key="s4" initial={{ opacity:0, scale:0.9 }} animate={{ opacity:1, scale:1 }}
-              className="text-center py-10">
+              className="text-center py-12">
               <motion.div
                 initial={{ scale: 0 }} animate={{ scale: 1 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.2 }}
-                className="w-24 h-24 rounded-full bg-cherry/10 flex items-center justify-center mx-auto mb-6 border border-cherry/20"
+                className="w-24 h-24 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-8 border border-gold/20"
               >
-                <CheckCircle size={48} className="text-cherry" />
+                <CheckCircle size={48} className="text-gold" />
               </motion.div>
-              <h2 className="font-serif text-3xl font-bold text-espresso mb-3">Запись подтверждена!</h2>
-              <p className="text-espresso/60 text-sm mb-1">{service?.name}</p>
-              <p className="text-cherry font-bold text-base mb-6">
-                {date ? format(date, 'd MMMM', { locale: ru }) : ''} в {time}
-              </p>
-              <p className="text-espresso/40 text-xs mb-10 max-w-[280px] mx-auto leading-relaxed">
-                Я уже получила ваше уведомление и скоро свяжусь с вами для подтверждения! ✨
+              <h2 className="font-serif text-3xl font-bold text-espresso mb-4 leading-tight">Запись успешно создана!</h2>
+              <div className="glass-card rounded-3xl p-6 mb-10 border border-gold/10 inline-block px-10">
+                 <p className="text-espresso/50 text-xs font-bold uppercase tracking-widest mb-1">{service?.name}</p>
+                 <p className="text-gold font-bold text-lg">
+                   {date ? format(date, 'd MMMM', { locale: ru }) : ''} в {time}
+                 </p>
+              </div>
+              <p className="text-espresso/40 text-xs mb-10 max-w-[280px] mx-auto leading-relaxed font-medium">
+                Я уже получила ваше уведомление и скоро свяжусь с вами для подтверждения! До встречи! ✨
               </p>
               <button onClick={reset} id="booking-new-btn"
-                className="btn-primary px-10 py-4 text-xs uppercase tracking-widest mx-auto block">
-                Записаться ещё раз
+                className="btn-primary px-12 py-5 text-[10px] font-bold uppercase tracking-[0.2em] mx-auto block shadow-lg">
+                На главную
               </button>
             </motion.div>
           )}

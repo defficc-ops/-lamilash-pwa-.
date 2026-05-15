@@ -29,13 +29,13 @@ export default function InstagramSection() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="font-serif text-2xl font-bold text-espresso">Следите за нами</h2>
-          <p className="text-cocoa text-sm">@lamilash_kari в Instagram</p>
+          <p className="text-gold text-sm font-semibold uppercase tracking-wider">@lamilash_kari</p>
         </div>
         <a 
           href={siteConfig.socials.instagram}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 flex items-center justify-center text-white shadow-glow"
+          className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] flex items-center justify-center text-white shadow-lg"
         >
           <Instagram size={20} />
         </a>
@@ -48,7 +48,7 @@ export default function InstagramSection() {
             href={siteConfig.socials.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="block aspect-square rounded-2xl overflow-hidden relative group"
+            className="block aspect-square rounded-2xl overflow-hidden relative group border border-gold/5"
           >
             <img 
               src={src} 
@@ -58,8 +58,8 @@ export default function InstagramSection() {
                 (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=400';
               }}
             />
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <Instagram className="text-white w-8 h-8 opacity-80" />
+            <div className="absolute inset-0 bg-espresso/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+              <Instagram className="text-white w-8 h-8 opacity-90" />
             </div>
           </a>
         ))}
@@ -69,10 +69,10 @@ export default function InstagramSection() {
         href={siteConfig.socials.instagram}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full py-4 border border-cocoa/30 rounded-2xl flex items-center justify-center gap-2 text-espresso font-semibold hover:bg-cocoa/5 transition-colors"
+        className="w-full py-4 border border-gold/30 rounded-2xl flex items-center justify-center gap-2 text-espresso font-bold text-xs uppercase tracking-widest hover:bg-gold/5 transition-colors"
       >
-        <span>Перейти в профиль</span>
-        <ExternalLink size={16} className="opacity-60" />
+        <span>В Instagram</span>
+        <ExternalLink size={14} className="opacity-40" />
       </a>
     </motion.section>
   )

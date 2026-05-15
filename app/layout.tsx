@@ -51,10 +51,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192.png" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Lamilash" />
         <meta name="application-name" content="Lamilash Kari" />
-        <meta name="theme-color" content="#120A06" />
+        <meta name="theme-color" content="#F6F0E8" />
       </head>
       <body className="bg-cream font-sans antialiased">
         {children}
