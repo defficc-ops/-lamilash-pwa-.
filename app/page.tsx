@@ -23,7 +23,7 @@ export default function SplashPage() {
       {visible && (
         <motion.div
           key="splash"
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-end overflow-hidden bg-cream"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-end overflow-hidden bg-espresso"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
           transition={{ duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
@@ -47,8 +47,8 @@ export default function SplashPage() {
             </motion.div>
             
             {/* Artistic Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-cream via-cream/40 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-b from-cream/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-espresso/60 via-transparent to-transparent" />
           </div>
 
 
