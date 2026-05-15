@@ -57,30 +57,30 @@ export default function SplashPage() {
           <div className="relative z-10 w-full px-10 pb-20 flex flex-col items-center">
             
             {/* Brand Identity */}
-            <div className="text-center mb-12">
+            <div className="text-center mb-16">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 1 }}
-                className="flex items-center gap-4 justify-center mb-6"
+                className="flex items-center gap-6 justify-center mb-8"
               >
-                <div className="h-[1px] w-8 bg-gold/40" />
-                <span className="text-gold/60 text-[10px] tracking-[0.4em] uppercase font-bold">Premium Beauty</span>
-                <div className="h-[1px] w-8 bg-gold/40" />
+                <div className="h-[0.5px] w-12 bg-gold/30" />
+                <span className="text-gold text-[11px] tracking-[0.5em] uppercase font-light">Premium Beauty</span>
+                <div className="h-[0.5px] w-12 bg-gold/30" />
               </motion.div>
 
               <motion.h1
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2, duration: 1.2, ease: "easeOut" }}
-                className="font-serif text-6xl font-bold text-white tracking-tight"
+                transition={{ delay: 1.2, duration: 1.5, ease: "easeOut" }}
+                className="font-serif text-7xl md:text-8xl font-medium text-white tracking-tight leading-none"
               >
                 Lamilash
                 <motion.span 
-                  className="block text-gold italic text-3xl mt-1 font-medium"
-                  initial={{ opacity: 0, x: -20 }}
+                  className="block text-gold italic text-4xl md:text-5xl mt-4 font-light tracking-wide"
+                  initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.8, duration: 1 }}
+                  transition={{ delay: 2.2, duration: 1.2 }}
                 >
                   by Kari
                 </motion.span>
