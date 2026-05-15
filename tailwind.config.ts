@@ -16,7 +16,8 @@ const config: Config = {
         'dark-cocoa': 'var(--dark-cocoa)',
         espresso:   'var(--espresso)',
         gold:       'var(--gold)',
-        'light-gold': 'var(--light-gold)',
+        cherry:     'var(--cherry)',
+        'cherry-dark': 'var(--cherry-dark)',
       },
       fontFamily: {
         sans:  ['var(--font-inter)', 'sans-serif'],

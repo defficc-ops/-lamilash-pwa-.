@@ -5,14 +5,13 @@
 @tailwind utilities;
 
 :root {
-  --cream:        #120A06; /* Deeper Espresso background */
-  --warm-beige:   #1D110B; /* Darker coffee/mocha */
-  --sand:         #3D261C; /* Muted deep cocoa for borders */
-  --cocoa:        #A68A64; /* Muted sand for primary accents */
-  --dark-cocoa:   #8C7142; /* Deeper gold for hover */
+  --cream:        #1A0F0A; /* Deep Dark Brown background */
+  --warm-beige:   #251610; /* Lighter Brown for sections */
+  --sand:         #452C22; /* Muted Cocoa for borders */
+  --cherry:       #9B1B30; /* Cherry Red accent */
+  --cherry-dark:  #7A1526; /* Darker Cherry for hover */
   --espresso:     #FDF8F3; /* Near white for main text */
-  --gold:         #C9A96E; /* Branding gold */
-  --light-gold:   #E8D5B0;
+  --gold:         #D4B896; /* Muted gold/sand for secondary elements */
 }
 
 * {
@@ -100,17 +99,17 @@ body {
 
 /* ── Floating button ── */
 .btn-primary {
-  background: linear-gradient(135deg, var(--cocoa), var(--dark-cocoa));
-  color: var(--cream);
+  background: linear-gradient(135deg, var(--cherry), var(--cherry-dark));
+  color: white;
   border-radius: 50px;
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 20px rgba(139, 99, 72, 0.35);
+  box-shadow: 0 4px 20px rgba(155, 27, 48, 0.35);
 }
 .btn-primary:hover, .btn-primary:active {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(139, 99, 72, 0.45);
+  box-shadow: 0 8px 30px rgba(155, 27, 48, 0.45);
 }
 
 .btn-secondary {
@@ -224,14 +223,14 @@ body {
 
 /* ── Calendar overrides ── */
 .rdp {
-  --rdp-accent-color: var(--cocoa) !important;
+  --rdp-accent-color: var(--cherry) !important;
   --rdp-background-color: var(--warm-beige) !important;
   margin: 0;
 }
 .rdp-day_selected:not([disabled]),
 .rdp-day_selected:focus:not([disabled]),
 .rdp-day_selected:active:not([disabled]) {
-  background-color: var(--cocoa) !important;
+  background-color: var(--cherry) !important;
   color: white !important;
 }
 .rdp-day:hover:not([disabled]):not(.rdp-day_selected) {
