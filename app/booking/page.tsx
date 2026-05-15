@@ -29,7 +29,7 @@ export default function BookingPage() {
   const [slotId, setSlotId]       = useState<number | null>(null)
   const [availableSlots, setAvailableSlots] = useState<{id: number, time: string}[]>([])
   const [name, setName]           = useState('')
-  const [phone, setPhone]         = useState('+7 ')
+  const [phone, setPhone]         = useState('+996 ')
   const [loading, setLoading]     = useState(false)
   const [done, setDone]           = useState(false)
 
@@ -74,15 +74,15 @@ export default function BookingPage() {
 
   function reset() {
     setStep(0); setService(null); setDate(undefined)
-    setTime(null); setSlotId(null); setName(''); setPhone('+7 '); setDone(false)
+    setTime(null); setSlotId(null); setName(''); setPhone('+996 '); setDone(false)
   }
 
   function handlePhoneChange(e: React.ChangeEvent<HTMLInputElement>) {
     const val = e.target.value
-    if (val.startsWith('+7 ')) {
+    if (val.startsWith('+996 ')) {
       setPhone(val)
-    } else if (val.length < 3) {
-      setPhone('+7 ')
+    } else if (val.length < 5) {
+      setPhone('+996 ')
     }
   }
 
@@ -246,7 +246,7 @@ export default function BookingPage() {
                 <div>
                   <label className="text-xs font-bold text-espresso/40 uppercase tracking-widest mb-2 block ml-1">Номер телефона</label>
                   <input id="booking-phone" value={phone} onChange={handlePhoneChange}
-                    placeholder="+7 (___) ___-__-__" type="tel" className="input-field bg-warm-beige/50 border-sand/30" />
+                    placeholder="+996 (___) ___-___" type="tel" className="input-field bg-warm-beige/50 border-sand/30" />
                 </div>
               </div>
 
