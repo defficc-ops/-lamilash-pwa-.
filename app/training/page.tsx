@@ -27,7 +27,7 @@ export default function TrainingPage() {
             <img 
               src="/images/90.png" 
               alt="Обучение" 
-              className="h-full w-full object-cover object-[center_30%] md:object-center"
+              className="h-full w-full object-cover object-[center_top] md:object-center"
             />
           </motion.div>
           {/* Enhanced Luxury Gradient: Darker at bottom for text readability, clearer at top for the face */}
