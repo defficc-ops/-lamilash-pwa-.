@@ -30,7 +30,7 @@ export default function ProcessVideo() {
           className="w-full h-full object-cover opacity-80"
           poster="/images/work1.png"
         >
-          <source src="/images/процнсс.mp4" type="video/mp4" />
+          <source src="/images/process.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/60" />
       </motion.div>

@@ -3,14 +3,15 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Home, Grid, Calendar, Star, User } from 'lucide-react'
+import { Home, Grid, Calendar, Star, User, GraduationCap } from 'lucide-react'
 
 const NAV_ITEMS = [
-  { href: '/home',      icon: Home,     label: 'Главная'  },
-  { href: '/portfolio', icon: Grid,     label: 'Работы'   },
-  { href: '/booking',   icon: Calendar, label: 'Запись'   },
-  { href: '/reviews',   icon: Star,     label: 'Отзывы'   },
-  { href: '/dashboard', icon: User,     label: 'Кабинет'  },
+  { href: '/home',      icon: Home,          label: 'Главная'  },
+  { href: '/portfolio', icon: Grid,          label: 'Работы'   },
+  { href: '/training',  icon: GraduationCap, label: 'Обучение' },
+  { href: '/booking',   icon: Calendar,      label: 'Запись'   },
+  { href: '/reviews',   icon: Star,          label: 'Отзывы'   },
+  { href: '/dashboard', icon: User,          label: 'Кабинет'  },
 ]
 
 export default function BottomNav() {
@@ -21,7 +22,7 @@ export default function BottomNav() {
 
   return (
     <nav className="bottom-nav">
-      <div className="flex items-stretch justify-around px-2 pt-2">
+      <div className="flex items-stretch justify-around px-1 pt-2">
         {NAV_ITEMS.map(({ href, icon: Icon, label }) => {
           const active = pathname.startsWith(href)
           return (
@@ -29,7 +30,7 @@ export default function BottomNav() {
               key={href}
               href={href}
               id={`nav-${label.toLowerCase()}`}
-              className="flex flex-col items-center gap-0.5 px-3 py-1 min-w-[52px] relative"
+              className="flex flex-col items-center gap-0.5 px-1.5 py-1 min-w-[48px] relative"
             >
               {active && (
                 <motion.div
