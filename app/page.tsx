@@ -23,32 +23,32 @@ export default function SplashPage() {
       {visible && (
         <motion.div
           key="splash"
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-end overflow-hidden bg-espresso"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-end overflow-hidden bg-[#000000]"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
-          transition={{ duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] }}
+          exit={{ opacity: 0, scale: 1.05, filter: 'blur(12px)' }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         >
           {/* Cinematic Background */}
           <div className="absolute inset-0">
             <motion.div
               className="absolute inset-0"
-              initial={{ scale: 1.2, opacity: 0 }}
+              initial={{ scale: 1.05, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 4, ease: 'easeOut' }}
+              transition={{ duration: 4, ease: [0.33, 1, 0.68, 1] }}
             >
               <img
                 src="/images/founder.jpg.png"
                 alt="Lamilash Kari"
-                className="w-full h-full object-cover object-top opacity-50 contrast-[1.1] saturate-[0.9]"
+                className="w-full h-full object-cover object-center"
                 onError={(e) => {
-                  (e.target as any).parentElement.style.background = 'linear-gradient(to bottom, #5C3D2E, #2C1810)';
+                  (e.target as any).parentElement.style.background = 'linear-gradient(to bottom, #110A08, #000000)';
                 }}
               />
             </motion.div>
             
-            {/* Artistic Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/80 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-b from-espresso/60 via-transparent to-transparent" />
+            {/* Subtle Overlays for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-[#000000]/40 to-transparent" />
+            <div className="absolute inset-0 bg-black/20" />
           </div>
 
 
@@ -59,28 +59,28 @@ export default function SplashPage() {
             {/* Brand Identity */}
             <div className="text-center mb-16">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 1 }}
-                className="flex items-center gap-6 justify-center mb-8"
+                transition={{ delay: 0.8, duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+                className="flex items-center gap-6 justify-center mb-6"
               >
                 <div className="h-[0.5px] w-12 bg-gold/30" />
-                <span className="text-gold text-[11px] tracking-[0.5em] uppercase font-light">Premium Beauty</span>
+                <span className="text-gold text-[10px] tracking-[0.6em] uppercase font-light">Premium Beauty</span>
                 <div className="h-[0.5px] w-12 bg-gold/30" />
               </motion.div>
 
               <motion.h1
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2, duration: 1.5, ease: "easeOut" }}
-                className="font-serif text-7xl md:text-8xl font-medium text-white tracking-tight leading-none"
+                initial={{ opacity: 0, scale: 0.98, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 2, ease: [0.22, 1, 0.36, 1] }}
+                className="font-serif text-5xl md:text-6xl font-normal text-white/90 tracking-widest leading-none"
               >
                 Lamilash
                 <motion.span 
-                  className="block text-gold italic text-4xl md:text-5xl mt-4 font-light tracking-wide"
-                  initial={{ opacity: 0, x: -10 }}
+                  className="block text-gold/90 italic text-3xl md:text-4xl mt-3 font-light tracking-wider"
+                  initial={{ opacity: 0, x: -5 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 2.2, duration: 1.2 }}
+                  transition={{ delay: 2.2, duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
                 >
                   by Kari
                 </motion.span>

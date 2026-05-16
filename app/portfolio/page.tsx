@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import BeforeAfterSlider from '@/components/BeforeAfterSlider'
 import BottomNav from '@/components/BottomNav'
+import ScrollReveal from '@/components/ScrollReveal'
 
 const CATEGORIES = [
   { id: 'all',     label: 'Все'        },
@@ -31,15 +32,11 @@ export default function PortfolioPage() {
     <div className="page-container bg-cream">
       {/* Header */}
       <div className="pt-safe px-5 pt-14 pb-4">
-        <motion.div
-          initial={{ opacity: 0, y: -16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <ScrollReveal direction="down" distance={20} blur duration={0.8}>
           <p className="text-cocoa text-xs font-semibold uppercase tracking-widest mb-1">Портфолио</p>
-          <h1 className="font-serif text-3xl font-bold text-espresso">Мои работы</h1>
+          <h1 className="heading-premium text-3xl text-espresso">Мои работы</h1>
           <p className="text-espresso/55 text-sm mt-1">Перетащите ползунок для сравнения</p>
-        </motion.div>
+        </ScrollReveal>
       </div>
 
       {/* Category filter */}
@@ -73,42 +70,31 @@ export default function PortfolioPage() {
             transition={{ duration: 0.3 }}
           >
             {filtered.map((item, i) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05, duration: 0.4 }}
-                className="glass-card rounded-2xl overflow-hidden flex flex-col"
-              >
-                <div className="aspect-square relative">
-                   <img 
-                      src={item.after} 
-                      alt={item.caption}
-                      className="w-full h-full object-cover"
-                   />
-                   <div className="absolute top-2 left-2 bg-gold/80 backdrop-blur-sm px-1.5 py-0.5 rounded-md">
-                      <p className="text-[8px] font-bold text-white uppercase tracking-tighter">After</p>
-                   </div>
+              <ScrollReveal direction="up" delay={i * 0.1} key={item.id} blur>
+                <div className="glass-premium rounded-2xl overflow-hidden flex flex-col hover-slow group">
+                  <div className="relative overflow-hidden">
+                    <BeforeAfterSlider
+                      beforeSrc={item.before}
+                      afterSrc={item.after}
+                    />
+                  </div>
+                  <div className="p-3 pb-4">
+                    <p className="text-[11px] text-espresso font-medium leading-relaxed text-balance">{item.caption}</p>
+                  </div>
                 </div>
-                <div className="p-2.5">
-                  <p className="text-[10px] text-espresso font-medium leading-tight line-clamp-2 h-7">{item.caption}</p>
-                </div>
-              </motion.div>
+              </ScrollReveal>
             ))}
           </motion.div>
         </AnimatePresence>
 
         {/* Upload placeholder notice */}
-        <motion.div
-          className="mt-8 mb-4 glass-card rounded-2xl p-5 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-2xl mb-2">📸</p>
-          <p className="font-semibold text-espresso text-sm">Ваши фото появятся здесь</p>
-          <p className="text-espresso/50 text-xs mt-1">Загрузите фото До/После через панель администратора</p>
-        </motion.div>
+        <ScrollReveal direction="up" delay={0.4} blur>
+          <div className="mt-8 mb-4 glass-premium rounded-2xl p-5 text-center">
+            <p className="text-2xl mb-2">📸</p>
+            <p className="font-semibold text-espresso text-sm">Ваши фото появятся здесь</p>
+            <p className="text-espresso/50 text-xs mt-1 text-balance">Загрузите фото До/После через панель администратора</p>
+          </div>
+        </ScrollReveal>
       </div>
 
       <BottomNav />

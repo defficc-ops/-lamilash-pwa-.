@@ -40,6 +40,8 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 }
 
+import SmoothScroll from '@/components/SmoothScroll'
+
 export default function RootLayout({
   children,
 }: {
@@ -57,7 +59,9 @@ export default function RootLayout({
         <meta name="theme-color" content="#F6F0E8" />
       </head>
       <body className="bg-cream font-sans antialiased">
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   )
