@@ -34,7 +34,7 @@ export default function SplashPage() {
               className="absolute inset-0"
               initial={{ scale: 1.05, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 4, ease: [0.33, 1, 0.68, 1] }}
+              transition={{ duration: 6, ease: [0.33, 1, 0.68, 1] }}
             >
               <img
                 src="/images/founder.jpg.png"
