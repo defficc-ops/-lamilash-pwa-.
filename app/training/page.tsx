@@ -1,10 +1,11 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { BookOpen, Award, Star, CheckCircle2, GraduationCap, ArrowRight } from 'lucide-react'
+import { BookOpen, Award, Star, CheckCircle2, GraduationCap, ArrowRight, MessageCircle } from 'lucide-react'
 import BottomNav from '@/components/BottomNav'
 import ScrollReveal from '@/components/ScrollReveal'
 import Link from 'next/link'
+import { siteConfig } from '@/lib/config'
 
 export default function TrainingPage() {
   return (
@@ -129,12 +130,14 @@ export default function TrainingPage() {
               </p>
               
               <Link 
-                href="https://t.me/your_username" 
-                className="btn-primary inline-flex items-center gap-3 px-8 py-4 text-xs uppercase tracking-widest"
-              >
-                Узнать подробности
-                <ArrowRight size={16} />
-              </Link>
+              href={siteConfig.socials.whatsapp} 
+              target="_blank"
+              className="inline-flex items-center gap-3 px-10 py-5 rounded-full text-xs uppercase tracking-[0.2em] font-bold transition-all shadow-lg active:scale-95 bg-[#25D366] text-white hover:bg-[#20ba5a] shadow-green-500/20"
+            >
+              <MessageCircle size={18} fill="currentColor" />
+              Написать в WhatsApp
+              <ArrowRight size={16} />
+            </Link>
             </div>
           </ScrollReveal>
         </section>
