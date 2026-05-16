@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { BookOpen, Award, Star, CheckCircle2, GraduationCap, ArrowRight } from 'lucide-react'
 import BottomNav from '@/components/BottomNav'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -10,31 +10,49 @@ export default function TrainingPage() {
   return (
     <div className="page-container bg-cream">
       {/* ── Hero Banner Section ── */}
-      <section className="relative h-[65vh] w-full overflow-hidden">
+      <section className="relative h-[75vh] md:h-[85vh] w-full overflow-hidden bg-espresso">
         <motion.div 
           className="absolute inset-0"
-          initial={{ scale: 1.2, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            y: useTransform(useScroll().scrollY, [0, 500], [0, 150]) // Parallax effect
+          }}
         >
-          <img 
-            src="/images/founder.jpg.png" 
-            alt="Обучение" 
-            className="h-full w-full object-cover object-center"
-          />
-          {/* Luxury Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/40 to-transparent" />
+          <motion.div
+            className="h-full w-full"
+            initial={{ scale: 1.15, filter: 'blur(10px)', opacity: 0 }}
+            animate={{ scale: 1, filter: 'blur(0px)', opacity: 1 }}
+            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <img 
+              src="/images/founder.jpg.png" 
+              alt="Обучение" 
+              className="h-full w-full object-cover object-[center_20%] md:object-center"
+            />
+          </motion.div>
+          {/* Enhanced Luxury Gradient: Darker at bottom for text readability, clearer at top for the face */}
+          <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/30 to-transparent opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-espresso/40 via-transparent to-transparent opacity-50" />
         </motion.div>
 
-        <div className="relative z-10 h-full flex flex-col justify-end px-6 pb-12 max-w-2xl mx-auto">
-          <ScrollReveal direction="up" delay={0.4} distance={30}>
-            <span className="inline-flex items-center gap-2 bg-gold/20 backdrop-blur-md px-3 py-1 rounded-full mb-4 border border-gold/30">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-              <span className="text-gold text-[10px] font-bold tracking-[0.2em] uppercase">Academy of Beauty</span>
-            </span>
-            <h1 className="heading-premium text-4xl md:text-5xl text-cream mb-3">Обучение от Kari</h1>
-            <p className="text-cream/70 text-sm md:text-base max-w-[320px] leading-relaxed font-light">
-              Освойте востребованную профессию в мире красоты под руководством опытного наставника.
+        <div className="relative z-10 h-full flex flex-col justify-end px-6 pb-20 max-w-4xl mx-auto">
+          <ScrollReveal direction="up" delay={0.6} distance={40} duration={1.5}>
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <span className="inline-flex items-center gap-2 bg-gold/30 backdrop-blur-xl px-4 py-1.5 rounded-full mb-6 border border-white/20 shadow-glow">
+                <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+                <span className="text-white text-[11px] font-bold tracking-[0.25em] uppercase shadow-sm">Premium Academy</span>
+              </span>
+            </motion.div>
+            
+            <h1 className="heading-premium text-5xl md:text-7xl text-white mb-4 drop-shadow-2xl">
+              <span className="block text-gold/90 text-xl md:text-2xl mb-2 font-sans tracking-[0.3em] uppercase">Master Class</span>
+              Обучение от Kari
+            </h1>
+            
+            <p className="text-cream/80 text-base md:text-lg max-w-[400px] leading-relaxed font-light drop-shadow-md">
+              Раскройте свой потенциал и освойте искусство идеального взгляда под руководством эксперта.
             </p>
           </ScrollReveal>
         </div>
