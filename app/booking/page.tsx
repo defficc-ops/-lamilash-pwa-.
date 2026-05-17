@@ -7,6 +7,7 @@ import { DayPicker } from 'react-day-picker'
 import { ru } from 'date-fns/locale'
 import { format, addDays, isBefore, startOfToday } from 'date-fns'
 import BottomNav from '@/components/BottomNav'
+import { siteConfig } from '@/lib/config'
 
 const SERVICES = [
   { id: 1, name: 'Ламинирование ресниц 3в1', duration: 90,  price: 600, icon: '✨' },
@@ -67,6 +68,16 @@ export default function BookingPage() {
       })
       setDone(true)
       setStep(4)
+
+      // Формируем сообщение для WhatsApp
+      const text = `Здравствуйте, Карина! ✨\n\nХочу подтвердить свою онлайн-запись:\nУслуга: ${service.name}\nДата: ${format(date, 'd MMMM', { locale: ru })} в ${time}\nИмя: ${name}`;
+      const encodedText = encodeURIComponent(text);
+      const waPhone = siteConfig.contacts.phone.replace(/[^0-9]/g, '');
+      const waUrl = `https://wa.me/${waPhone}?text=${encodedText}`;
+      
+      // Перенаправляем клиента в WhatsApp
+      window.location.href = waUrl;
+
     } finally {
       setLoading(false)
     }
@@ -279,10 +290,14 @@ export default function BookingPage() {
                  </p>
               </div>
               <p className="text-espresso/40 text-xs mb-10 max-w-[280px] mx-auto leading-relaxed font-medium">
-                Я уже получила ваше уведомление и скоро свяжусь с вами для подтверждения! До встречи! ✨
+                Сейчас вы будете перенаправлены в WhatsApp для подтверждения записи. Если этого не произошло, нажмите кнопку ниже ✨
               </p>
+              <a href={`https://wa.me/${siteConfig.contacts.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Здравствуйте, Карина! ✨\nХочу подтвердить запись на ${service?.name} (${date ? format(date, 'd MMMM', { locale: ru }) : ''} в ${time}). Имя: ${name}`)}`}
+                className="btn-primary px-12 py-5 text-[10px] font-bold uppercase tracking-[0.2em] mx-auto block shadow-lg text-center mb-4">
+                Перейти в WhatsApp
+              </a>
               <button onClick={reset} id="booking-new-btn"
-                className="btn-primary px-12 py-5 text-[10px] font-bold uppercase tracking-[0.2em] mx-auto block shadow-lg">
+                className="text-espresso/40 text-[10px] font-bold uppercase tracking-widest block w-full">
                 На главную
               </button>
             </motion.div>
