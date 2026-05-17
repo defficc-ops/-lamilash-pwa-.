@@ -25,7 +25,7 @@ export default function BookingPage() {
   const [date, setDate]           = useState<Date | undefined>()
   const [time, setTime]           = useState<string | null>(null)
   const [slotId, setSlotId]       = useState<number | null>(null)
-  const [availableSlots, setAvailableSlots] = useState<{id: number, time: string}[]>([])
+  const [availableSlots, setAvailableSlots] = useState<{id: number, time: string, is_booked: boolean}[]>([])
   const [name, setName]           = useState('')
   const [phone, setPhone]         = useState('+996 ')
   const [loading, setLoading]     = useState(false)
@@ -217,19 +217,32 @@ export default function BookingPage() {
               <div className="grid grid-cols-3 gap-3">
                 {availableSlots.length > 0 ? (
                   availableSlots.map((s) => (
-                    <button key={s.id} id={`time-${s.time}`}
-                      onClick={() => { setTime(s.time); setSlotId(s.id); setStep(3) }}
-                      className={`py-4 rounded-2xl text-xs font-bold uppercase tracking-widest border transition-all active:scale-95 ${
-                        time === s.time
-                          ? 'bg-gold text-white border-gold shadow-lg shadow-gold/20'
-                          : 'bg-white text-espresso border-gold/10 hover:border-gold/40'
-                      }`}>
-                      {s.time}
+                    <button
+                      key={s.id}
+                      id={`time-${s.time}`}
+                      disabled={s.is_booked}
+                      onClick={() => {
+                        setTime(s.time);
+                        setSlotId(s.id);
+                        setStep(3);
+                      }}
+                      className={`py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest border transition-all flex flex-col items-center justify-center gap-0.5 ${
+                        s.is_booked
+                          ? 'bg-espresso/5 text-espresso/25 border-espresso/5 cursor-not-allowed opacity-50'
+                          : time === s.time
+                          ? 'bg-gold text-white border-gold shadow-lg shadow-gold/20 active:scale-95'
+                          : 'bg-white text-espresso border-gold/10 hover:border-gold/40 active:scale-95'
+                      }`}
+                    >
+                      <span className={s.is_booked ? 'line-through opacity-50' : ''}>{s.time}</span>
+                      {s.is_booked && (
+                        <span className="text-[7px] text-espresso/30 tracking-normal font-bold lowercase">занято</span>
+                      )}
                     </button>
                   ))
                 ) : (
                   <div className="col-span-3 py-12 text-center glass-card rounded-3xl border-dashed border-gold/20">
-                    <p className="text-xs font-bold text-espresso/30 uppercase tracking-widest">Нет свободных мест 😔</p>
+                    <p className="text-xs font-bold text-espresso/30 uppercase tracking-widest">Нет доступных слотов 😔</p>
                   </div>
                 )}
               </div>

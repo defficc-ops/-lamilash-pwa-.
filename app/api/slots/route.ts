@@ -19,7 +19,6 @@ export async function GET(req: NextRequest) {
       .select('*')
       .gte('slot_datetime', startOfDay)
       .lte('slot_datetime', endOfDay)
-      .eq('is_booked', false)
       .order('slot_datetime', { ascending: true })
 
     if (error) throw error
@@ -28,6 +27,7 @@ export async function GET(req: NextRequest) {
       id: slot.id,
       time: format(parseISO(slot.slot_datetime), 'HH:mm'),
       slot_datetime: slot.slot_datetime,
+      is_booked: slot.is_booked,
     }))
 
     // If no real slots yet, return demo slots for display
@@ -38,6 +38,7 @@ export async function GET(req: NextRequest) {
           time: t,
           slot_datetime: `${date}T${t}:00.000Z`,
           demo: true,
+          is_booked: false,
         })),
       })
     }
@@ -52,6 +53,7 @@ export async function GET(req: NextRequest) {
         time: t,
         slot_datetime: `${date}T${t}:00.000Z`,
         demo: true,
+        is_booked: false,
       })),
     })
   }
