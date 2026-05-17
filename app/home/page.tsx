@@ -18,7 +18,6 @@ const SERVICES_PREVIEW = [
   { icon: '✨', name: 'Ламинирование ресниц 3в1', price: '600 с', time: '90 мин', href: '/booking' },
   { icon: '🌿', name: 'Ламинирование бровей 5в1', price: '800 с', time: '60 мин', href: '/booking' },
   { icon: '💫', name: 'Комбо Лами (всё вкл)', price: '1200 с', time: '150 мин', href: '/booking' },
-  { icon: '🎨', name: 'Окрашивание', price: '250 с', time: '45 мин', href: '/booking' },
 ]
 
 const STATS = [
